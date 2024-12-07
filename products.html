@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JewelryStore - Our Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products List Section -->
+    <section class="products-list">
+        <div class="container">
+            <h1>Our Products</h1>
+            <div class="product-grid">
+                <!-- Product Item 1: Gold Necklace -->
+                <div class="product-item">
+                    <img src="https://i.pinimg.com/736x/aa/61/d2/aa61d2c5064bdebd519608d4eef4c88e.jpg"
+                        alt="Gold Necklace">
+                    <h3>Gold Necklace</h3>
+                    <p>$799.99</p>
+                    <button class="btn add-to-cart" onclick="addToCart('gold-necklace')">Add to Cart</button>
+                </div>
+
+                <!-- Product Item 2: Gold Ring -->
+                <div class="product-item">
+                    <img src="https://i.pinimg.com/736x/4e/88/5e/4e885e4ee909a720c61e56e5d2823598.jpg" alt="Gold Ring">
+                    <h3>Gold Ring</h3>
+                    <p>$999.99</p>
+                    <button class="btn add-to-cart" onclick="addToCart('gold-ring')">Add to Cart</button>
+                </div>
+
+                <!-- Product Item 3: Diamond Ring -->
+                <div class="product-item">
+                    <img src="https://www.arthursjewelers.com/content/images/thumbs/500/WRW-12955-19361332.jpg"
+                        alt="Diamond Ring">
+                    <h3>Diamond Ring</h3>
+                    <p>$1,499.99</p>
+                    <button class="btn add-to-cart" onclick="addToCart('diamond-ring')">Add to Cart</button>
+                </div>
+
+                <!-- Product Item 4: Gold Bracelet -->
+                <div class="product-item">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20230404/r2KD/642c0f83907deb497ac8b232/-473Wx593H-6006499890-multi-MODEL.jpg"
+                        alt="Gold Bracelet">
+                    <h3>Gold Bracelet</h3>
+                    <p>$1,199.99</p>
+                    <button class="btn add-to-cart" onclick="addToCart('gold-bracelet')">Add to Cart</button>
+                </div>
+
+                <!-- Product Item 5: Silver Bracelet -->
+                <div class="product-item">
+                    <img src="https://zevrr.com/cdn/shop/products/SilverHeartBracelet.webp?v=1681491478"
+                        alt="Silver Bracelet">
+                    <h3>Silver Bracelet</h3>
+                    <p>$499.99</p>
+                    <button class="btn add-to-cart" onclick="addToCart('silver-bracelet')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy;Udhaya's JewelryStore. Crafted with ❤️ by Udhaya's Elegant Designs.</p>
+    </footer>
+
+    <!-- JavaScript for Add to Cart -->
+    <script>
+        // Product Data
+        const products = {
+            'gold-necklace': {
+                name: "Gold Necklace",
+                price: 799.99,
+                description: "A stunning 14k yellow gold necklace with intricate designs, perfect for any occasion.",
+                image: "images/gold-necklace.jpg",
+                material: "14k Yellow Gold"
+            },
+            'gold-ring': {
+                name: "Gold Ring",
+                price: 999.99,
+                description: "A luxurious 18k gold ring with a sleek and modern design, ideal for everyday wear.",
+                image: "images/gold-ring.jpg",
+                material: "18k Yellow Gold"
+            },
+            'diamond-ring': {
+                name: "Diamond Ring",
+                price: 1499.99,
+                description: "A brilliant 1.5-carat diamond ring set in 18k white gold, designed for engagement or special moments.",
+                image: "images/diamond-ring-large.jpg",
+                material: "18k White Gold, Diamond"
+            },
+            'diamond-necklace': {
+                name: "Diamond Necklace",
+                price: 2499.99,
+                description: "A stunning diamond necklace set in platinum, perfect for a special event or gift.",
+                image: "images/diamond-necklace.jpg",
+                material: "Platinum, Diamond"
+            },
+            'gold-bracelet': {
+                name: "Gold Bracelet",
+                price: 1199.99,
+                description: "A beautiful 14k gold bracelet with intricate links, perfect for adding sophistication to any outfit.",
+                image: "images/gold-bracelet.jpg",
+                material: "14k Yellow Gold"
+            },
+            'silver-bracelet': {
+                name: "Silver Bracelet",
+                price: 499.99,
+                description: "A stylish sterling silver bracelet, perfect for both casual and formal wear.",
+                image: "images/silver-bracelet.jpg",
+                material: "Sterling Silver"
+            }
+        };
+
+        // Add to Cart Function
+        function addToCart(productId) {
+            const product = products[productId];
+            if (!product) {
+                alert('Product not found!');
+                return;
+            }
+
+            // Get the cart from localStorage, or create a new one if it doesn't exist
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Create a product object to store in the cart
+            const cartProduct = {
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                material: product.material
+            };
+
+            // Add the product to the cart
+            cart.push(cartProduct);
+
+            // Save the updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Alert the user
+            alert(`${product.name} has been added to your cart!`);
+        }
+    </script>
+
+</body>
+
+</html>
